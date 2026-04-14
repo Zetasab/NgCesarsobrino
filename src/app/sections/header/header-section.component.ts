@@ -17,6 +17,7 @@ export class HeaderSectionComponent implements OnInit, OnDestroy {
   protected readonly isScrolled = signal(false);
   protected readonly isOnDarkSection = signal(true);
   protected readonly showMouseHint = signal(false);
+  protected readonly isMenuOpen = signal(false);
 
   private inactivityTimer?: ReturnType<typeof setTimeout>;
 
@@ -67,6 +68,14 @@ export class HeaderSectionComponent implements OnInit, OnDestroy {
 
     this.showMouseHint.set(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  protected toggleMenu(): void {
+    this.isMenuOpen.update((open) => !open);
+  }
+
+  protected closeMenu(): void {
+    this.isMenuOpen.set(false);
   }
 
   private clearInactivityTimer(): void {

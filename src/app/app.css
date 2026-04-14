@@ -20,6 +20,19 @@
 	margin-inline: auto;
 }
 
+.site-footer {
+	padding: 1.15rem 1rem 1.4rem;
+	text-align: center;
+	background: #0a0a0a;
+	color: #cfcfcf;
+	font-size: 0.82rem;
+	letter-spacing: 0.02em;
+}
+
+.site-footer p {
+	margin: 0;
+}
+
 @media (max-width: 640px) {
 	:host {
 		padding: 0;
