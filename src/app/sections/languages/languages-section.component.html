@@ -1,0 +1,86 @@
+<section class="section section-languages" aria-labelledby="languages-title">
+  <div class="fade-edge top" aria-hidden="true"></div>
+
+  <div class="languages-wrap">
+    <header #revealBlock class="section-head reveal-block">
+      <p class="eyebrow">Tech Stack</p>
+      <h2 id="languages-title">Mis lenguajes utilizados</h2>
+    </header>
+
+    <om-marquee
+      #revealBlock
+      class="reveal-block marquee-top"
+      [animationDuration]="'22s'"
+      [marqueeGap]="'0.85rem'"
+      [pauseOnHover]="true"
+      styleClass="languages-marquee"
+    >
+      @for (item of marqueeItems; track item.label) {
+        <ng-template [omMarqueeItem]="item">
+          <article class="marquee-item">
+            <span class="lang-icon marquee-icon">
+              @if (item.logo) {
+                <img [src]="item.logo" [alt]="item.label + ' logo'" />
+              } @else {
+                <span>{{ item.icon }}</span>
+              }
+            </span>
+            <span>{{ item.label }}</span>
+          </article>
+        </ng-template>
+      }
+    </om-marquee>
+
+    <div class="groups-grid">
+      @for (group of groups; track group.title) {
+        <article #revealBlock class="group-card reveal-block">
+          <h3>{{ group.title }}</h3>
+          <div class="lang-list">
+            @for (item of group.items; track item.name) {
+              <div class="lang-item">
+                <div class="lang-head">
+                  <span class="lang-icon">
+                    @if (item.logo) {
+                      <img [src]="item.logo" [alt]="item.name + ' logo'" />
+                    } @else {
+                      <span>{{ item.icon }}</span>
+                    }
+                  </span>
+                  <p class="lang-name">{{ item.name }}</p>
+                </div>
+                <p class="lang-desc">{{ item.description }}</p>
+              </div>
+            }
+          </div>
+        </article>
+      }
+    </div>
+
+    <om-marquee
+      #revealBlock
+      class="reveal-block marquee-bottom"
+      [reverse]="true"
+      [animationDuration]="'24s'"
+      [marqueeGap]="'0.85rem'"
+      [pauseOnHover]="true"
+      styleClass="languages-marquee"
+    >
+      @for (item of marqueeItems; track item.label) {
+        <ng-template [omMarqueeItem]="item">
+          <article class="marquee-item">
+            <span class="lang-icon marquee-icon">
+              @if (item.logo) {
+                <img [src]="item.logo" [alt]="item.label + ' logo'" />
+              } @else {
+                <span>{{ item.icon }}</span>
+              }
+            </span>
+            <span>{{ item.label }}</span>
+          </article>
+        </ng-template>
+      }
+    </om-marquee>
+  </div>
+
+  <div class="fade-edge bottom" aria-hidden="true"></div>
+</section>

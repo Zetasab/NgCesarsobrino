@@ -33,6 +33,7 @@
     "@omnedia/ngx-aurora": "^4.0.1",
     "@omnedia/ngx-flickering-grid": "^4.0.1",
     "@omnedia/ngx-galaxy": "^4.0.1",
+    "@omnedia/ngx-marquee": "^4.0.1",
     "@omnedia/ngx-theme-toggle": "^4.0.1",
     "@omnedia/ngx-timeline": "^4.0.1",
     "@omnedia/ngx-tracing-beam": "^4.0.1",

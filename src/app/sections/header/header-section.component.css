@@ -25,7 +25,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: min(50vw, 760px);
-  min-width: 520px;
+  min-width: 0;
   z-index: 120;
   height: 58px;
   padding: 0 0.85rem;
