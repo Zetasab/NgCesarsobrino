@@ -1,59 +1,87 @@
-# NgCesarsobrino
+# Cesar Sobrino | Portfolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.2.
+![Portada del portfolio](public/Portada.png)
 
-## Development server
+Portfolio personal desarrollado con Angular, orientado a mostrar perfil profesional, experiencia, stack técnico y proyectos mediante una navegación visual por secciones.
 
-To start a local development server, run:
+## Secciones de la web
 
-```bash
-ng serve
+- Header: Hero de entrada con navegación fija, menú responsive y accesos rápidos por anclas.
+- Sobre mí: Presentación personal con resumen técnico.
+- Lenguajes: Tecnologías y herramientas principales que utilizo.
+- Timeline: Recorrido académico y profesional con efectos de scroll.
+- Proyectos: Sección interactiva con nodos conectados, contenido ampliable y previews en video.
+- Contacto: Cierre con correo, enlaces sociales y descarga de CV.
+- Footer: Pie minimalista con información final.
+
+## Stack utilizado
+
+- Angular 21
+- TypeScript
+- CSS personalizado
+- @omnedia/ngx-aurora
+- @omnedia/ngx-typewriter
+- @omnedia/ngx-marquee
+- @omnedia/ngx-tracing-beam
+- @omnedia/ngx-timeline
+- @omnedia/ngx-connection-beam
+
+## Contacto
+
+- Email: cesarsobrinoarribas@gmail.com
+- GitHub: https://github.com/Zetasab
+- LinkedIn: https://www.linkedin.com/in/cesar-sobrino-arribas-1b887021b/
+- Instagram: https://www.instagram.com/zetasaab/
+- CV: public/Cesar_SobrinoArribas_CV.pdf
+
+## Estructura del proyecto
+
+```text
+public/
+	Portada.png
+	logo.png
+	visit-tracker.js
+	Cesar_SobrinoArribas_CV.pdf
+
+src/
+	app/
+		sections/
+			header/
+			about/
+			languages/
+			timeline/
+			projects/
+			contact/
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Ejecutar en local
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1. Instalar dependencias:
 
 ```bash
-ng generate component component-name
+npm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+2. Levantar entorno de desarrollo:
 
 ```bash
-ng generate --help
+npm run start
 ```
 
-## Building
+3. Abrir en navegador:
 
-To build the project run:
+```text
+http://localhost:4200
+```
+
+## Scripts disponibles
 
 ```bash
-ng build
+npm run start   # arranca en desarrollo
+npm run build   # genera build de producción
+npm run test    # ejecuta tests
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Nota
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Si no ves cambios en assets o scripts estáticos, haz una recarga forzada con Ctrl+F5.
