@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  OnDestroy,
+  QueryList,
+  ViewChildren,
+  signal
+} from '@angular/core';
 import { NgxTimelineComponent, NgxTimelineEntryComponent } from '@omnedia/ngx-timeline';
 
 interface TimelineEvent {
@@ -14,7 +23,15 @@ interface TimelineEvent {
   templateUrl: './timeline-section.component.html',
   styleUrl: './timeline-section.component.css'
 })
-export class TimelineSectionComponent {
+export class TimelineSectionComponent implements AfterViewInit, OnDestroy {
+  @ViewChildren('revealItem', { read: ElementRef })
+  private readonly revealItems!: QueryList<ElementRef<HTMLElement>>;
+
+  private intersectionObserver?: IntersectionObserver;
+
+  protected readonly timelinePathColor = '#2f2f2f';
+  protected readonly timelineGradientColors = ['#38bdf8', '#f97316'];
+
   protected readonly events = signal<TimelineEvent[]>([
     {
       period: '2019',
@@ -42,4 +59,35 @@ export class TimelineSectionComponent {
       description: 'Desarrollador de Software de Aplicaciones .NET Core con Angular/Blazor en Excem Technologies.'
     }
   ]);
+
+  ngAfterViewInit(): void {
+    if (typeof window === 'undefined' || typeof IntersectionObserver === 'undefined') {
+      this.revealItems.forEach((itemRef) => itemRef.nativeElement.classList.add('is-visible'));
+      return;
+    }
+
+    this.intersectionObserver = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            this.intersectionObserver?.unobserve(entry.target);
+          }
+        }
+      },
+      {
+        threshold: 0.15,
+        rootMargin: '0px 0px -8% 0px'
+      }
+    );
+
+    this.revealItems.forEach((itemRef, index) => {
+      itemRef.nativeElement.style.setProperty('--reveal-delay', `${index * 120}ms`);
+      this.intersectionObserver?.observe(itemRef.nativeElement);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.intersectionObserver?.disconnect();
+  }
 }

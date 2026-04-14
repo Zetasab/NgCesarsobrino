@@ -34,9 +34,16 @@ export class HeaderSectionComponent implements OnInit, OnDestroy {
     }
 
     const currentScroll = window.scrollY;
+    const isInContactSection = this.isInContactSection(currentScroll);
+
     this.isScrolled.set(currentScroll > 8);
     this.isOnDarkSection.set(currentScroll < window.innerHeight - 120);
     this.clearInactivityTimer();
+
+    if (isInContactSection) {
+      this.showMouseHint.set(false);
+      return;
+    }
 
     if (currentScroll === 0) {
       this.showMouseHint.set(true);
@@ -45,7 +52,7 @@ export class HeaderSectionComponent implements OnInit, OnDestroy {
 
     this.showMouseHint.set(false);
     this.inactivityTimer = setTimeout(() => {
-      if (typeof window !== 'undefined' && window.scrollY > 0) {
+      if (typeof window !== 'undefined' && window.scrollY > 0 && !this.isInContactSection(window.scrollY)) {
         this.showMouseHint.set(true);
       }
     }, 4000);
@@ -67,5 +74,15 @@ export class HeaderSectionComponent implements OnInit, OnDestroy {
       clearTimeout(this.inactivityTimer);
       this.inactivityTimer = undefined;
     }
+  }
+
+  private isInContactSection(currentScroll: number): boolean {
+    const contactSection = document.querySelector('.section-contact') as HTMLElement | null;
+
+    if (!contactSection) {
+      return false;
+    }
+
+    return currentScroll >= contactSection.offsetTop - 80;
   }
 }

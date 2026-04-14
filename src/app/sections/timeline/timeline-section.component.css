@@ -37,6 +37,23 @@ h2 {
   background: #101010;
 }
 
+.reveal-item {
+  --reveal-delay: 0ms;
+  opacity: 0;
+  transform: translateY(14px);
+  filter: blur(2px);
+  transition:
+    opacity 460ms ease var(--reveal-delay),
+    transform 460ms ease var(--reveal-delay),
+    filter 460ms ease var(--reveal-delay);
+}
+
+.reveal-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
 .timeline-item h3 {
   margin: 0;
   font-size: 1rem;
@@ -52,6 +69,15 @@ h2 {
   background: var(--primary-color);
 }
 
-:host ::ng-deep .career-timeline .om-timeline-entry-header .om-timeline-line {
-  background: #2d2d2d;
+:host ::ng-deep .career-timeline.switch .om-timeline-path {
+  stroke: #444 !important;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+
+:host ::ng-deep .career-timeline.switch .om-timeline-gradient-path {
+  stroke: url(#gradient) !important;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.55));
 }

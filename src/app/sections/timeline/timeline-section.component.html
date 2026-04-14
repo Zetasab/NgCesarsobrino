@@ -3,9 +3,12 @@
     <h2 id="timeline-title">Timeline</h2>
     <om-timeline
       [orientation]="'switch'"
-      [entriesGap]="'2.5rem'"
+      [entriesGap]="'2rem'"
       [entryGap]="'1.25rem'"
       [titleGap]="'1rem'"
+      [pathWidth]="'4px'"
+      [pathColor]="timelinePathColor"
+      [gradientColors]="timelineGradientColors"
       styleClass="career-timeline"
     >
       @for (event of events(); track event.period + event.title) {
@@ -14,7 +17,7 @@
             <p class="period">{{ event.period }}</p>
           </ng-template>
           <ng-template #timelineContent>
-            <article class="timeline-item">
+            <article #revealItem class="timeline-item reveal-item">
               <h3>{{ event.title }}</h3>
               <p>{{ event.description }}</p>
             </article>
