@@ -1,0 +1,39 @@
+<section class="section section-about" aria-labelledby="about-title">
+  <div class="about-wrap">
+    <div class="about-copy">
+      <h2 id="about-title">Sobre mi</h2>
+
+      @for (line of aboutLines; track line) {
+        <p #revealLine class="reveal-line">{{ line }}</p>
+      }
+    </div>
+
+    <aside #revealLine class="about-panel reveal-line" aria-label="Resumen tecnico">
+      <div class="panel-head">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <p>cesar@portfolio:~</p>
+      </div>
+
+      <div class="panel-body">
+        <p class="cmd"><span>$</span> stack --current</p>
+        <div class="chip-grid">
+          @for (item of stack; track item) {
+            <span class="chip">{{ item }}</span>
+          }
+        </div>
+
+        <p class="cmd"><span>$</span> status --summary</p>
+        <div class="stats-grid">
+          @for (stat of quickStats; track stat.label) {
+            <article class="stat-item">
+              <p class="stat-label">{{ stat.label }}</p>
+              <p class="stat-value">{{ stat.value }}</p>
+            </article>
+          }
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
