@@ -1,0 +1,43 @@
+<section class="section section-header" aria-labelledby="hero-title">
+  <nav
+    class="glass-nav"
+    [class.is-scrolled]="isScrolled()"
+    [class.on-dark]="isOnDarkSection()"
+    aria-label="Navegacion principal"
+  >
+    <a class="brand" href="#hero-title" aria-label="Inicio">
+      <img class="brand-logo" src="favicon.ico" alt="Logo" />
+    </a>
+    <ul class="menu">
+      <li><a href="#hero-title">Inicio</a></li>
+      <li><a href="#timeline-title">Timeline</a></li>
+      <li><a href="#links-title">Recursos</a></li>
+    </ul>
+    <a class="stats-action" href="#timeline-title" aria-label="Ver estadisticas">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 20V12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        <path d="M10 20V8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        <path d="M16 20V4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        <path d="M22 20V10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+      </svg>
+    </a>
+  </nav>
+
+  <om-aurora class="hero-aurora" [invert]="true" [versionTwo]="true">
+    <div class="hero-content">
+      <p class="eyebrow">Portfolio</p>
+      <h1 id="hero-title">CESAR SOBRINO</h1>
+      <div class="subtitle" aria-live="polite">
+        <om-typewriter
+          [words]="welcomeWords"
+          [disableLoop]="true"
+          [writeSpeed]="62"
+          [deleteDelay]="2600"
+          [startDelay]="300"
+          [textCursorColor]="'#f5f5f5'"
+          [styleClass]="'hero-typewriter'"
+        />
+      </div>
+    </div>
+  </om-aurora>
+</section>

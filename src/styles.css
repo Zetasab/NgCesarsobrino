@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap');
+
+:root,
+html.light {
+	--app-bg: #f4f4f4;
+	--app-grid: rgba(8, 8, 8, 0.06);
+	--surface-card: #ffffff;
+	--surface-ground: #f6f6f6;
+	--surface-hover: #eeeeee;
+	--surface-border: #d2d2d2;
+	--primary-color: #101010;
+	--text-color: #0a0a0a;
+	--text-color-secondary: #444444;
+}
+
+html.dark {
+	--app-bg: #070707;
+	--app-grid: rgba(255, 255, 255, 0.07);
+	--surface-card: #0f0f0f;
+	--surface-ground: #0b0b0b;
+	--surface-hover: #1b1b1b;
+	--surface-border: #292929;
+	--primary-color: #f3f3f3;
+	--text-color: #f3f3f3;
+	--text-color-secondary: #cfcfcf;
+}
+
+html,
+body {
+	margin: 0;
+	min-height: 100%;
+}
+
+body {
+	font-family: 'Manrope', 'Segoe UI', sans-serif;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation: none;
+	mix-blend-mode: normal;
+}

@@ -1,39 +1,35 @@
 {
-    "workbench.colorCustomizations": {
-    "editor.background": "#0b0000",
-    "editor.foreground": "#F5EAEA",
-
-    "titleBar.activeBackground": "#2b0000",
-    "titleBar.activeForeground": "#ffffff",
-    "titleBar.inactiveBackground": "#160000",
-    "titleBar.inactiveForeground": "#bbbbbb",
-
-    "activityBar.background": "#1a0000",
-    "activityBar.foreground": "#ff4d4d",
-    "activityBar.inactiveForeground": "#8a4a4a",
-    "activityBarBadge.background": "#ff1a1a",
-    "activityBarBadge.foreground": "#ffffff",
-
-    "sideBar.background": "#120000",
-    "sideBar.foreground": "#e6caca",
-
-    "editorGroupHeader.tabsBackground": "#140000",
-    "tab.activeBackground": "#1f0000",
-    "tab.activeForeground": "#ffffff",
-    "tab.inactiveBackground": "#0e0000",
-    "tab.inactiveForeground": "#a66",
-
-    "statusBar.background": "#2a0000",
+  "workbench.colorCustomizations": {
+    // Fondo: Un gris con mucha carga de rojo oscuro
+    "editor.background": "#2b1616",
+    "sideBar.background": "#241212",
+    "activityBar.background": "#3d0a0a",
+    
+    // Acentos: Rojo intenso para lo que importa
+    "activityBar.foreground": "#ff3333",
+    "editorCursor.foreground": "#ff0000",
+    "editor.lineHighlightBackground": "#411a1a",
+    "editor.selectionBackground": "#801515",
+    
+    // Barra de estado: Rojo sólido
+    "statusBar.background": "#8b0000",
     "statusBar.foreground": "#ffffff",
-    "statusBar.debuggingBackground": "#550000",
+    "statusBarItem.hoverBackground": "#b30000",
 
-    "editorLineNumber.foreground": "#703030",
-    "editorLineNumber.activeForeground": "#ff4d4d",
-
-    "editorCursor.foreground": "#ff3333",
-    "editor.selectionBackground": "#660000",
-
-    "panel.background": "#0e0000",
-    "terminal.background": "#0b0000"
+    // Pestañas y UI
+    "tab.activeBackground": "#5c1212",
+    "tab.activeForeground": "#ffffff",
+    "tab.inactiveBackground": "#241212",
+    "tab.border": "#4d0000",
+    
+    // Paneles y widgets
+    "titleBar.activeBackground": "#241212",
+    "editorWidget.background": "#3d0a0a",
+    "list.hoverBackground": "#5c1212",
+    "list.activeSelectionBackground": "#8b0000"
+},
+"chat.tools.terminal.autoApprove": {
+    "Get-Command": true,
+    "ForEach-Object": true
 }
 }

@@ -1,0 +1,220 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.hero-aurora {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.section-header {
+  min-height: 100vh;
+  padding: 0;
+  background: linear-gradient(165deg, #020202, #111111 62%, #000000);
+  color: #ffffff;
+}
+
+.glass-nav {
+  position: fixed;
+  top: 0.9rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(50vw, 760px);
+  min-width: 520px;
+  z-index: 120;
+  height: 58px;
+  padding: 0 0.85rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  transition:
+    background-color 260ms ease,
+    border-color 260ms ease,
+    backdrop-filter 260ms ease,
+    box-shadow 260ms ease,
+    width 260ms ease;
+}
+
+.glass-nav.is-scrolled {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px) saturate(145%);
+  -webkit-backdrop-filter: blur(16px) saturate(145%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+.glass-nav.on-dark .brand,
+.glass-nav.on-dark .menu a,
+.glass-nav.on-dark .stats-action {
+  mix-blend-mode: difference;
+  color: #ffffff;
+}
+
+.glass-nav.on-dark .brand-logo {
+  filter: invert(1);
+}
+
+.glass-nav.is-scrolled:not(.on-dark) {
+  border-color: rgba(15, 23, 42, 0.16);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.glass-nav.is-scrolled:not(.on-dark) .brand,
+.glass-nav.is-scrolled:not(.on-dark) .menu a,
+.glass-nav.is-scrolled:not(.on-dark) .stats-action {
+  mix-blend-mode: normal;
+  color: #0f172a;
+}
+
+.glass-nav.is-scrolled:not(.on-dark) .brand-logo {
+  filter: none;
+}
+
+.glass-nav.is-scrolled:not(.on-dark) .menu a:hover,
+.glass-nav.is-scrolled:not(.on-dark) .stats-action:hover {
+  border-color: rgba(15, 23, 42, 0.2);
+  background: rgba(15, 23, 42, 0.08);
+}
+
+.brand {
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  mix-blend-mode: difference;
+}
+
+.brand-logo {
+  width: 1.6rem;
+  height: 1.6rem;
+  display: block;
+  border: 0;
+  outline: 0;
+  filter: invert(1);
+}
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.menu a {
+  display: inline-flex;
+  align-items: center;
+  height: 2rem;
+  padding: 0 0.85rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 0.82rem;
+  border: 1px solid transparent;
+  mix-blend-mode: difference;
+}
+
+.menu a:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.stats-action {
+  width: 2.1rem;
+  height: 2.1rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: #ffffff;
+  border: 1px solid transparent;
+  text-decoration: none;
+  mix-blend-mode: difference;
+}
+
+.stats-action:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.stats-action svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.hero-content {
+  min-height: 100vh;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+  padding: 0;
+}
+
+:host ::ng-deep .hero-aurora .om-aurora {
+  min-height: 100vh;
+}
+
+.eyebrow {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+h1 {
+  margin: 0.8rem 0 0;
+  font-size: clamp(2.1rem, 8vw, 6.2rem);
+  color: #ffffff;
+  letter-spacing: 0.06em;
+  line-height: 0.95;
+}
+
+.subtitle {
+  margin: 1rem 0 0;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 62ch;
+}
+
+:host ::ng-deep .hero-typewriter {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(0.95rem, 2.8vw, 1.3rem);
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 760px) {
+  .glass-nav {
+    width: calc(100vw - 1.2rem);
+    min-width: 0;
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0.6rem;
+  }
+
+  .menu {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-content {
+    min-height: 100vh;
+  }
+}

@@ -1,0 +1,14 @@
+<section class="section" aria-labelledby="timeline-title">
+  <h2 id="timeline-title">Timeline</h2>
+  <p-timeline [value]="events()" align="alternate" styleClass="portfolio-timeline">
+    <ng-template #opposite let-event>
+      <small class="year">{{ event.year }}</small>
+    </ng-template>
+    <ng-template #content let-event>
+      <article class="timeline-item">
+        <h3>{{ event.title }}</h3>
+        <p>{{ event.description }}</p>
+      </article>
+    </ng-template>
+  </p-timeline>
+</section>

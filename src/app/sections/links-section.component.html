@@ -1,0 +1,8 @@
+<section class="section" aria-labelledby="links-title">
+  <h2 id="links-title">Recursos</h2>
+  <div class="link-grid">
+    @for (link of links(); track link.href) {
+      <a [href]="link.href" target="_blank" rel="noopener">{{ link.label }}</a>
+    }
+  </div>
+</section>
