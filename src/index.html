@@ -6,10 +6,121 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="logo.png">
+  <style>
+    #app-splash {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #ffffff;
+      display: grid;
+      place-items: center;
+      transition: opacity 420ms ease-in-out, visibility 420ms ease-in-out;
+    }
+
+    #app-splash.is-hiding {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .splash-content {
+      width: min(320px, 86vw);
+      display: grid;
+      justify-items: center;
+      gap: 1rem;
+    }
+
+    .splash-logo {
+      width: 88px;
+      height: 88px;
+      object-fit: contain;
+    }
+
+    .splash-bar {
+      width: 100%;
+      height: 7px;
+      background: #ececec;
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .splash-progress {
+      height: 100%;
+      width: 34%;
+      background: linear-gradient(90deg, #111111 0%, #4b5563 100%);
+      border-radius: 999px;
+      transform: translateX(-110%);
+      animation: splash-indeterminate 1.15s ease-in-out infinite;
+      transition: width 800ms ease-in-out, transform 800ms ease-in-out;
+    }
+
+    #app-splash.is-loaded .splash-progress {
+      animation: none;
+      width: 100%;
+      transform: translateX(0);
+    }
+
+    @keyframes splash-indeterminate {
+      0% {
+        transform: translateX(-110%);
+      }
+      100% {
+        transform: translateX(320%);
+      }
+    }
+  </style>
 </head>
 <body>
+  <div id="app-splash" aria-hidden="true">
+    <div class="splash-content">
+      <img class="splash-logo" src="logo.png" alt="Logo" />
+      <div class="splash-bar">
+        <div class="splash-progress"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- https://ngxui.com/docs/theme-toggle -->
   <app-root></app-root>
+
+  <script>
+    (function () {
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+
+      window.scrollTo(0, 0);
+
+      var splashEl = document.getElementById('app-splash');
+      if (!splashEl) {
+        return;
+      }
+
+      function hideSplash() {
+        window.scrollTo(0, 0);
+        splashEl.classList.add('is-loaded');
+
+        setTimeout(function () {
+          splashEl.classList.add('is-hiding');
+        }, 820);
+
+        setTimeout(function () {
+          splashEl.remove();
+        }, 1300);
+      }
+
+      if (document.readyState === 'complete') {
+        hideSplash();
+      } else {
+        window.addEventListener('load', hideSplash, { once: true });
+      }
+
+      window.addEventListener('pageshow', function () {
+        window.scrollTo(0, 0);
+      });
+    })();
+  </script>
+
   <script src="visit-tracker.js" defer></script>
 </body>
 </html>
