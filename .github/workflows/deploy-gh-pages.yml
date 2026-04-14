@@ -39,12 +39,19 @@ jobs:
       - name: Build Angular app for GitHub Pages
         run: |
           REPO_NAME="${{ github.event.repository.name }}"
-          npx ng build --configuration production --base-href "/${REPO_NAME}/"
+          if [ -f CNAME ]; then
+            npx ng build --configuration production --base-href "/"
+          else
+            npx ng build --configuration production --base-href "/${REPO_NAME}/"
+          fi
 
       - name: Prepare SPA fallback and nojekyll
         run: |
           cp dist/NgCesarsobrino/browser/index.html dist/NgCesarsobrino/browser/404.html
           touch dist/NgCesarsobrino/browser/.nojekyll
+          if [ -f CNAME ]; then
+            cp CNAME dist/NgCesarsobrino/browser/CNAME
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
