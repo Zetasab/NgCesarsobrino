@@ -1,48 +1,65 @@
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NgxConnectionBeamComponent } from '@omnedia/ngx-connection-beam';
 
 interface ProjectItem {
-  name: string;
-  description: string;
-  image: string;
+	name: string;
+	description: string;
+	image: string;
+	video?: string;
 }
 
 @Component({
-  selector: 'app-section-projects',
-  imports: [NgxConnectionBeamComponent],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './projects-section.component.html',
-  styleUrl: './projects-section.component.css'
+	selector: 'app-section-projects',
+	imports: [NgxConnectionBeamComponent],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	templateUrl: './projects-section.component.html',
+	styleUrl: './projects-section.component.css'
 })
 export class ProjectsSectionComponent {
-  protected readonly projects = signal<ProjectItem[]>([
-    {
-      name: 'ZetaDashboard',
-      description:
-        'Un proyecto personal para manejar en tablas y cruds los usuarios, datos etc. Esta hecho con Blazor de frontend y llamadas a una API REST mia con C#.',
-      image: 'logos/languages/Csharp_logo.png'
-    },
-    {
-      name: 'ZetaMovies',
-      description:
-        'Es un proyecto personal para guardar peliculas como vistas o previstas para ver. Esta hecho con Vue.js de frontend y hace llamadas a la API de TheMovieDatabase.',
-      image: 'logos/languages/Vue_logo.png'
-    },
-    {
-      name: 'ZetaGames',
-      description:
-        'Es un proyecto personal para guardar juegos como jugados o previstos por jugar. Esta hecho con React.js de frontend y hace llamadas a la API de RAWG.',
-      image: 'logos/languages/React_logo.png'
-    },
-    {
-      name: 'Antiguo Portfolio',
-      description: 'Es mi antiguo portfolio que hice en 2022.',
-      image: 'logos/languages/HTML_logo.png'
-    }
-  ]);
+	protected readonly projects: ProjectItem[] = [
+		{
+			name: 'ZetaDashboard',
+			description:
+				'Proyecto personal para gestionar usuarios y datos con tablas y CRUDs. Frontend en Blazor y consumo de API REST propia en C#.',
+			image: 'proyects/front-page/Proyects_dashboard.png',
+			video: 'proyects/videos/dashboard.mp4'
+		},
+		{
+			name: 'ZetaMovies',
+			description:
+				'Proyecto personal para guardar peliculas vistas o pendientes. Frontend en Vue.js y conexion con API de TheMovieDatabase.',
+			image: 'proyects/front-page/Proyects_movies.png',
+			video: 'proyects/videos/movies.mp4'
+		},
+		{
+			name: 'ZetaGames',
+			description:
+				'Proyecto personal para organizar juegos jugados o pendientes. Frontend en React.js y conexion con API de RAWG.',
+			image: 'proyects/front-page/Proyects_games.png',
+			video: 'proyects/videos/games.mp4'
+		},
+		{
+			name: 'Antiguo Portfolio',
+			description: 'Mi portfolio anterior, creado en 2022.',
+			image: 'proyects/front-page/Proyects_cv.png'
+		}
+	];
 
-  protected readonly projectOne = computed(() => this.projects()[0]);
-  protected readonly projectTwo = computed(() => this.projects()[1]);
-  protected readonly projectThree = computed(() => this.projects()[2]);
-  protected readonly projectFour = computed(() => this.projects()[3]);
+	protected onCardEnter(video?: HTMLVideoElement): void {
+		if (!video) {
+			return;
+		}
+
+		video.currentTime = 0;
+		void video.play();
+	}
+
+	protected onCardLeave(video?: HTMLVideoElement): void {
+		if (!video) {
+			return;
+		}
+
+		video.pause();
+		video.currentTime = 0;
+	}
 }
