@@ -1,12 +1,22 @@
 <section class="section section-about" aria-labelledby="about-title">
   <div class="about-wrap">
-    <div class="about-copy">
-      <h2 id="about-title">Sobre mi</h2>
+    <om-tracing-beam
+      class="about-beam"
+      [strokeColor]="'#3a3a44'"
+      [gradientTop]="'#f5f5f5'"
+      [gradientMiddle]="'#a1a1aa'"
+      [gradientBottom]="'#52525b'"
+      [animationDuration]="640"
+      styleClass="about-tracing-beam"
+    >
+      <div class="about-copy">
+        <h2 id="about-title">Sobre mi</h2>
 
-      @for (line of aboutLines; track line) {
-        <p #revealLine class="reveal-line">{{ line }}</p>
-      }
-    </div>
+        @for (line of aboutLines; track line) {
+          <p #revealLine class="reveal-line">{{ line }}</p>
+        }
+      </div>
+    </om-tracing-beam>
 
     <aside #revealLine class="about-panel reveal-line" aria-label="Resumen tecnico">
       <div class="panel-head">

@@ -1,7 +1,9 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnDestroy, QueryList, ViewChildren } from '@angular/core';
+import { NgxTracingBeamComponent } from '@omnedia/ngx-tracing-beam';
 
 @Component({
   selector: 'app-section-about',
+  imports: [NgxTracingBeamComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './about-section.component.html',
   styleUrl: './about-section.component.css'
