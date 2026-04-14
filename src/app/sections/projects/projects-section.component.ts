@@ -50,8 +50,15 @@ export class ProjectsSectionComponent {
 			return;
 		}
 
+		video.muted = true;
+		video.playsInline = true;
+		video.autoplay = true;
+		video.setAttribute('autoplay', '');
 		video.currentTime = 0;
-		void video.play();
+		void video.play().catch(() => {
+			video.load();
+			void video.play();
+		});
 	}
 
 	protected onCardLeave(video?: HTMLVideoElement): void {
@@ -61,5 +68,7 @@ export class ProjectsSectionComponent {
 
 		video.pause();
 		video.currentTime = 0;
+		video.autoplay = false;
+		video.removeAttribute('autoplay');
 	}
 }
