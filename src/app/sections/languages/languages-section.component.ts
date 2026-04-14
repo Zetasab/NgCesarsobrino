@@ -43,6 +43,8 @@ export class LanguagesSectionComponent implements AfterViewInit, OnDestroy {
 
   private intersectionObserver?: IntersectionObserver;
 
+  private readonly revealThreshold = 0.08;
+
   protected readonly marqueeItems: MarqueeItem[] = [
     { icon: 'H5', label: 'HTML5', logo: 'logos/languages/HTML_logo.png' },
     { icon: 'C3', label: 'CSS3', logo: 'logos/languages/CSS3_logo.png' },
@@ -146,15 +148,29 @@ export class LanguagesSectionComponent implements AfterViewInit, OnDestroy {
         }
       },
       {
-        threshold: 0.22,
-        rootMargin: '0px 0px -10% 0px'
+        threshold: this.revealThreshold,
+        rootMargin: '0px 0px -5% 0px'
       }
     );
 
     this.revealBlocks.forEach((blockRef, index) => {
-      blockRef.nativeElement.style.setProperty('--reveal-delay', `${index * 90}ms`);
-      this.intersectionObserver?.observe(blockRef.nativeElement);
+      const blockEl = blockRef.nativeElement;
+      blockEl.style.setProperty('--reveal-delay', `${index * 90}ms`);
+
+      if (this.isInViewport(blockEl)) {
+        blockEl.classList.add('is-visible');
+        return;
+      }
+
+      this.intersectionObserver?.observe(blockEl);
     });
+  }
+
+  private isInViewport(element: HTMLElement): boolean {
+    const rect = element.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+    return rect.top < viewportHeight * (1 - this.revealThreshold) && rect.bottom > 0;
   }
 
   protected onSectionMouseMove(event: MouseEvent): void {

@@ -1,15 +1,15 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { TimelineModule } from 'primeng/timeline';
+import { NgxTimelineComponent, NgxTimelineEntryComponent } from '@omnedia/ngx-timeline';
 
 interface TimelineEvent {
-  year: string;
+  period: string;
   title: string;
   description: string;
 }
 
 @Component({
   selector: 'app-section-timeline',
-  imports: [TimelineModule],
+  imports: [NgxTimelineComponent, NgxTimelineEntryComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './timeline-section.component.html',
   styleUrl: './timeline-section.component.css'
@@ -17,19 +17,29 @@ interface TimelineEvent {
 export class TimelineSectionComponent {
   protected readonly events = signal<TimelineEvent[]>([
     {
-      year: '2022',
-      title: 'Inicio profesional',
-      description: 'Comienzo en desarrollo frontend con foco en Angular y TypeScript.'
+      period: '2019',
+      title: 'Grado medio',
+      description: 'Graduado en Grado medio de sistemas microinformaticos en red.'
     },
     {
-      year: '2024',
-      title: 'Arquitectura modular',
-      description: 'Implementación de apps divididas por secciones reutilizables.'
+      period: '2021',
+      title: 'Grado Superior DAM',
+      description: 'Graduado en el Grado Superior de Programacion de Aplicaciones Multiplataforma (DAM).'
     },
     {
-      year: '2026',
-      title: 'PrimeNG + Angular 21',
-      description: 'UI consistente, componentes modernos y performance con OnPush.'
+      period: '2022',
+      title: 'Grado Superior DAW',
+      description: 'Graduado en el Grado Superior de Programacion de Aplicaciones Web (DAW).'
+    },
+    {
+      period: 'Octubre 2021 - marzo 2022',
+      title: 'VisibleSoft',
+      description: 'Desarrollador de Software de Aplicaciones .NET Core con Angular en VisibleSoft.'
+    },
+    {
+      period: 'Diciembre 2022 - actualmente',
+      title: 'Excem Technologies',
+      description: 'Desarrollador de Software de Aplicaciones .NET Core con Angular/Blazor en Excem Technologies.'
     }
   ]);
 }

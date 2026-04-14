@@ -28,7 +28,6 @@ h2 {
 }
 
 a {
-  border: 1px solid var(--surface-border);
   border-radius: 10px;
   padding: 0.75rem 0.9rem;
   text-decoration: none;

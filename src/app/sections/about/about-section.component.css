@@ -36,11 +36,11 @@
 }
 
 :host ::ng-deep .about-tracing-beam .beam-dot {
-  border-color: #4b5563;
+  border-color: transparent;
 }
 
 :host ::ng-deep .about-tracing-beam .beam-inner-dot {
-  border-color: #4b5563;
+  border-color: transparent;
   background-color: #4b5563;
 }
 
@@ -88,7 +88,6 @@ h2 {
   top: 6.2rem;
   max-height: calc(100vh - 7.4rem);
   overflow: auto;
-  border: 1px solid #2a2a2f;
   border-radius: 18px;
   background: linear-gradient(180deg, #0b0b0d 0%, #070709 100%);
 }
@@ -96,7 +95,6 @@ h2 {
 .panel-head {
   height: 46px;
   padding: 0 0.9rem;
-  border-bottom: 1px solid #1e1e23;
   display: flex;
   align-items: center;
   gap: 0.48rem;
@@ -150,7 +148,6 @@ h2 {
 }
 
 .chip {
-  border: 1px solid #2f2f35;
   border-radius: 999px;
   padding: 0.3rem 0.6rem;
   font-size: 0.76rem;
@@ -166,7 +163,6 @@ h2 {
 }
 
 .stat-item {
-  border: 1px solid #2a2a30;
   border-radius: 12px;
   padding: 0.62rem 0.72rem;
   background: #111114;

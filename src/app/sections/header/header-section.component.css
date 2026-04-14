@@ -29,7 +29,6 @@
   z-index: 120;
   height: 58px;
   padding: 0 0.85rem;
-  border: 1px solid transparent;
   border-radius: 999px;
   background: transparent;
   backdrop-filter: none;
@@ -40,14 +39,12 @@
   gap: 0.75rem;
   transition:
     background-color 260ms ease,
-    border-color 260ms ease,
     backdrop-filter 260ms ease,
     box-shadow 260ms ease,
     width 260ms ease;
 }
 
 .glass-nav.is-scrolled {
-  border-color: rgba(255, 255, 255, 0.2);
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(16px) saturate(145%);
   -webkit-backdrop-filter: blur(16px) saturate(145%);
@@ -66,7 +63,6 @@
 }
 
 .glass-nav.is-scrolled:not(.on-dark) {
-  border-color: rgba(15, 23, 42, 0.16);
   background: rgba(255, 255, 255, 0.78);
 }
 
@@ -83,7 +79,6 @@
 
 .glass-nav.is-scrolled:not(.on-dark) .menu a:hover,
 .glass-nav.is-scrolled:not(.on-dark) .stats-action:hover {
-  border-color: rgba(15, 23, 42, 0.2);
   background: rgba(15, 23, 42, 0.08);
 }
 
@@ -124,12 +119,10 @@
   text-decoration: none;
   color: #ffffff;
   font-size: 0.82rem;
-  border: 1px solid transparent;
   mix-blend-mode: difference;
 }
 
 .menu a:hover {
-  border-color: rgba(255, 255, 255, 0.25);
   background: rgba(255, 255, 255, 0.08);
 }
 
@@ -140,13 +133,11 @@
   place-items: center;
   border-radius: 999px;
   color: #ffffff;
-  border: 1px solid transparent;
   text-decoration: none;
   mix-blend-mode: difference;
 }
 
 .stats-action:hover {
-  border-color: rgba(255, 255, 255, 0.25);
   background: rgba(255, 255, 255, 0.08);
 }
 

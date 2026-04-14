@@ -8,36 +8,50 @@
   min-height: 100vh;
   border: 0;
   border-radius: 0;
-  padding: 0;
-  background: var(--surface-card);
+  padding: 0 1.25rem;
+  background: #000;
+}
+
+.timeline-container {
+  width: min(100%, 980px);
+  margin: 0 auto;
+  padding: 0 0 2.5rem;
 }
 
 h2 {
   margin: 0;
   padding: 2.5rem 2rem 1rem;
   font-size: 1.5rem;
-  color: var(--text-color);
+  color: #f7f7f7;
 }
 
-.year {
-  color: var(--text-color-secondary);
+.period {
+  margin: 0;
+  color: #cfcfcf;
   font-weight: 600;
 }
 
 .timeline-item {
-  border: 1px solid var(--surface-border);
   border-radius: 12px;
-  padding: 0.85rem 1rem;
-  background: var(--surface-ground);
+  padding: 0.9rem 1rem;
+  background: #101010;
 }
 
 .timeline-item h3 {
   margin: 0;
   font-size: 1rem;
-  color: var(--text-color);
+  color: #f7f7f7;
 }
 
 .timeline-item p {
   margin: 0.5rem 0 0;
-  color: var(--text-color-secondary);
+  color: #cfcfcf;
+}
+
+:host ::ng-deep .career-timeline .om-timeline-entry-header .om-timeline-circle {
+  background: var(--primary-color);
+}
+
+:host ::ng-deep .career-timeline .om-timeline-entry-header .om-timeline-line {
+  background: #2d2d2d;
 }

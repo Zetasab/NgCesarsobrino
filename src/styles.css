@@ -44,6 +44,14 @@ body {
 	font-family: 'Manrope', 'Segoe UI', sans-serif;
 }
 
+om-aurora,
+om-tracing-beam,
+om-marquee,
+om-timeline {
+	display: block;
+	width: 100%;
+}
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
 	animation: none;

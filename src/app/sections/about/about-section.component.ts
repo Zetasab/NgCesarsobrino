@@ -14,6 +14,8 @@ export class AboutSectionComponent implements AfterViewInit, OnDestroy {
 
   private intersectionObserver?: IntersectionObserver;
 
+  private readonly revealThreshold = 0.1;
+
   protected readonly aboutLines: string[] = [
     'Buenas,',
     'Soy Cesar Sobrino, desarrollador Full Stack con mas de tres años de experiencia construyendo aplicaciones web y multiplataforma.',
@@ -52,15 +54,29 @@ export class AboutSectionComponent implements AfterViewInit, OnDestroy {
         }
       },
       {
-        threshold: 0.3,
-        rootMargin: '0px 0px -8% 0px'
+        threshold: this.revealThreshold,
+        rootMargin: '0px 0px -5% 0px'
       }
     );
 
     this.revealLines.forEach((lineRef, index) => {
-      lineRef.nativeElement.style.setProperty('--reveal-delay', `${index * 110}ms`);
-      this.intersectionObserver?.observe(lineRef.nativeElement);
+      const lineEl = lineRef.nativeElement;
+      lineEl.style.setProperty('--reveal-delay', `${index * 110}ms`);
+
+      if (this.isInViewport(lineEl)) {
+        lineEl.classList.add('is-visible');
+        return;
+      }
+
+      this.intersectionObserver?.observe(lineEl);
     });
+  }
+
+  private isInViewport(element: HTMLElement): boolean {
+    const rect = element.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+    return rect.top < viewportHeight * (1 - this.revealThreshold) && rect.bottom > 0;
   }
 
   ngOnDestroy(): void {
