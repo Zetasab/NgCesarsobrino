@@ -1,0 +1,97 @@
+<section class="section-projects" aria-labelledby="projects-title">
+  <div class="projects-container">
+    <header class="projects-head">
+      <h2 id="projects-title">Mis proyectos</h2>
+      <p>Hover en cada icono para ver detalles.</p>
+    </header>
+
+    <div class="beam-stage" aria-label="Mapa de proyectos conectados a GitHub">
+      <div #githubNode class="node node-center" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" role="img" aria-label="GitHub icon">
+          <path
+            d="M12 0.296875C5.37109 0.296875 0 5.66797 0 12.2969C0 17.6016 3.4375 22.1016 8.20703 23.6875C8.80859 23.7969 9.02734 23.4258 9.02734 23.1016C9.02734 22.8125 9.01562 22.043 9.01172 21.0234C5.67188 21.75 4.96875 19.4141 4.96875 19.4141C4.42188 18.0273 3.63281 17.6562 3.63281 17.6562C2.54688 16.9141 3.71484 16.9297 3.71484 16.9297C4.91406 17.0156 5.54688 18.1562 5.54688 18.1562C6.61719 19.9961 8.35156 19.4648 9.03516 19.1562C9.14453 18.3789 9.45312 17.8477 9.79297 17.5469C7.125 17.2422 4.32031 16.2109 4.32031 11.6016C4.32031 10.2891 4.78906 9.21875 5.55469 8.37891C5.42969 8.07812 5.01953 6.86719 5.67188 5.22656C5.67188 5.22656 6.67969 4.90234 8.98047 6.45312C9.9375 6.1875 10.9648 6.05469 11.9922 6.05078C13.0195 6.05469 14.0508 6.1875 15.0078 6.45312C17.3047 4.90234 18.3125 5.22656 18.3125 5.22656C18.9688 6.86719 18.5586 8.07812 18.4336 8.37891C19.2031 9.21875 19.668 10.2891 19.668 11.6016C19.668 16.2227 16.8594 17.2383 14.1836 17.5352C14.6094 17.9023 14.9961 18.6211 14.9961 19.7266C14.9961 21.3047 14.9805 22.6758 14.9805 23.1016C14.9805 23.4258 15.1992 23.8047 15.8086 23.6836C20.5781 22.0938 24.0156 17.5977 24.0156 12.2969C24.0156 5.66797 18.6445 0.296875 12.0156 0.296875H12Z"
+          ></path>
+        </svg>
+      </div>
+
+      <article #projectNode1 class="node node-project pos-1" [attr.aria-label]="projectOne().name">
+        <img [src]="projectOne().image" [alt]="projectOne().name + ' icono'" loading="lazy" />
+        <div class="node-detail">
+          <h3>{{ projectOne().name }}</h3>
+          <p>{{ projectOne().description }}</p>
+        </div>
+      </article>
+
+      <article #projectNode2 class="node node-project pos-2" [attr.aria-label]="projectTwo().name">
+        <img [src]="projectTwo().image" [alt]="projectTwo().name + ' icono'" loading="lazy" />
+        <div class="node-detail">
+          <h3>{{ projectTwo().name }}</h3>
+          <p>{{ projectTwo().description }}</p>
+        </div>
+      </article>
+
+      <article #projectNode3 class="node node-project pos-3" [attr.aria-label]="projectThree().name">
+        <img [src]="projectThree().image" [alt]="projectThree().name + ' icono'" loading="lazy" />
+        <div class="node-detail">
+          <h3>{{ projectThree().name }}</h3>
+          <p>{{ projectThree().description }}</p>
+        </div>
+      </article>
+
+      <article #projectNode4 class="node node-project pos-4" [attr.aria-label]="projectFour().name">
+        <img [src]="projectFour().image" [alt]="projectFour().name + ' icono'" loading="lazy" />
+        <div class="node-detail">
+          <h3>{{ projectFour().name }}</h3>
+          <p>{{ projectFour().description }}</p>
+        </div>
+      </article>
+
+      <om-connection-beam
+        [fromRef]="githubNode"
+        [toRef]="projectNode1"
+        [curvature]="32"
+        [pathColor]="'rgba(255, 255, 255, 0.15)'"
+        [gradientStartColor]="'#ffffff'"
+        [gradientStopColor]="'#9ca3af'"
+        [pathWidth]="2.2"
+        [pathOpacity]="0.7"
+        [duration]="5"
+      />
+      <om-connection-beam
+        [fromRef]="githubNode"
+        [toRef]="projectNode2"
+        [curvature]="-40"
+        [pathColor]="'rgba(255, 255, 255, 0.15)'"
+        [gradientStartColor]="'#ffffff'"
+        [gradientStopColor]="'#9ca3af'"
+        [pathWidth]="2.2"
+        [pathOpacity]="0.7"
+        [duration]="5.8"
+        [reverse]="true"
+      />
+      <om-connection-beam
+        [fromRef]="githubNode"
+        [toRef]="projectNode3"
+        [curvature]="46"
+        [pathColor]="'rgba(255, 255, 255, 0.15)'"
+        [gradientStartColor]="'#ffffff'"
+        [gradientStopColor]="'#9ca3af'"
+        [pathWidth]="2.2"
+        [pathOpacity]="0.7"
+        [duration]="6.2"
+      />
+      <om-connection-beam
+        [fromRef]="githubNode"
+        [toRef]="projectNode4"
+        [curvature]="-28"
+        [pathColor]="'rgba(255, 255, 255, 0.15)'"
+        [gradientStartColor]="'#ffffff'"
+        [gradientStopColor]="'#9ca3af'"
+        [pathWidth]="2.2"
+        [pathOpacity]="0.7"
+        [duration]="4.8"
+        [reverse]="true"
+      />
+    </div>
+  </div>
+</section>

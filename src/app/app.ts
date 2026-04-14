@@ -4,6 +4,7 @@ import { AboutSectionComponent } from './sections/about/about-section.component'
 import { HeaderSectionComponent } from './sections/header/header-section.component';
 import { LanguagesSectionComponent } from './sections/languages/languages-section.component';
 import { LinksSectionComponent } from './sections/links/links-section.component';
+import { ProjectsSectionComponent } from './sections/projects/projects-section.component';
 import { TimelineSectionComponent } from './sections/timeline/timeline-section.component';
 
 @Component({
@@ -14,6 +15,7 @@ import { TimelineSectionComponent } from './sections/timeline/timeline-section.c
     AboutSectionComponent,
     LanguagesSectionComponent,
     TimelineSectionComponent,
+    ProjectsSectionComponent,
     LinksSectionComponent
   ],
   templateUrl: './app.html',

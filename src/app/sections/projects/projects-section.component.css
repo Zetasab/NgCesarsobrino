@@ -1,0 +1,188 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.section-projects {
+  min-height: 100vh;
+  width: 100%;
+  padding: clamp(4.5rem, 8vw, 6rem) 1.1rem;
+  background: radial-gradient(circle at 10% 8%, rgba(255, 255, 255, 0.1), transparent 35%), #050505;
+  color: #f7f7f7;
+}
+
+.projects-container {
+  width: min(1080px, 100%);
+  margin: 0 auto;
+}
+
+.projects-head h2 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 0.95;
+}
+
+.projects-head p {
+  margin: 0.7rem 0 0;
+  color: #cfcfcf;
+}
+
+.beam-stage {
+  position: relative;
+  margin-top: 2rem;
+  height: min(72vh, 700px);
+  min-height: 540px;
+  overflow: visible;
+}
+
+.beam-stage > om-connection-beam {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+.node {
+  position: absolute;
+  z-index: 2;
+}
+
+.node-center {
+  left: 50%;
+  top: 50%;
+  width: 106px;
+  height: 106px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #141414;
+}
+
+.node-center svg {
+  width: 48px;
+  height: 48px;
+  fill: #ffffff;
+}
+
+.node-project {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #131313;
+  cursor: pointer;
+  transition: transform 220ms ease, background-color 220ms ease;
+}
+
+.node-project img {
+  width: 62%;
+  height: 62%;
+  object-fit: contain;
+  transition: transform 220ms ease;
+}
+
+.node-project:hover {
+  transform: scale(1.08);
+  background: #1d1d1d;
+}
+
+.node-project:hover img {
+  transform: scale(1.18);
+}
+
+.node-detail {
+  position: absolute;
+  top: calc(100% + 0.8rem);
+  left: 50%;
+  width: min(320px, 38vw);
+  transform: translate(-50%, 8px);
+  opacity: 0;
+  pointer-events: none;
+  background: #111111;
+  padding: 0.9rem;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.node-project:hover .node-detail {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.node-detail h3 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.node-detail p {
+  margin: 0.55rem 0 0;
+  color: #cecece;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.pos-1 {
+  left: 11%;
+  top: 20%;
+}
+
+.pos-2 {
+  right: 11%;
+  top: 20%;
+}
+
+.pos-3 {
+  left: 14%;
+  bottom: 10%;
+}
+
+.pos-4 {
+  right: 14%;
+  bottom: 10%;
+}
+
+@media (max-width: 920px) {
+  .projects-head p {
+    display: none;
+  }
+
+  .beam-stage {
+    min-height: 360px;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+  }
+
+  .node,
+  .node-project,
+  .node-center {
+    position: static;
+    transform: none;
+  }
+
+  .node-center {
+    grid-column: 1 / -1;
+    margin: 0 auto 0.2rem;
+  }
+
+  .node-project {
+    margin: 0 auto;
+    width: 92px;
+    height: 92px;
+  }
+
+  .node-project:hover {
+    transform: none;
+  }
+
+  .node-detail,
+  .node-project:hover .node-detail,
+  om-connection-beam {
+    display: none;
+  }
+}
