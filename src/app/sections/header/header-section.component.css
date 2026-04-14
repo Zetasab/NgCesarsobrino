@@ -120,10 +120,12 @@
   color: #ffffff;
   font-size: 0.82rem;
   mix-blend-mode: difference;
+  transition: background-color 260ms ease-in-out, color 260ms ease-in-out, transform 260ms ease-in-out;
 }
 
 .menu a:hover {
   background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
 }
 
 .stats-action {
@@ -135,15 +137,175 @@
   color: #ffffff;
   text-decoration: none;
   mix-blend-mode: difference;
+  position: relative;
+  transition: background-color 260ms ease-in-out, color 260ms ease-in-out, transform 260ms ease-in-out;
 }
 
 .stats-action:hover {
   background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+.stats-action::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 0.6rem);
+  transform: translateX(-50%) translateY(6px);
+  opacity: 0;
+  pointer-events: none;
+  width: min(300px, 70vw);
+  padding: 0.5rem 0.65rem;
+  border-radius: 8px;
+  background: rgba(17, 24, 39, 0.95);
+  color: #f8fafc;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  text-align: center;
+  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+  z-index: 160;
+}
+
+.stats-action:hover::after,
+.stats-action:focus-visible::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 .stats-action svg {
   width: 1rem;
   height: 1rem;
+}
+
+.stats-info {
+  cursor: help;
+}
+
+.scroll-top {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  width: 2.55rem;
+  height: 2.55rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px) saturate(145%);
+  -webkit-backdrop-filter: blur(16px) saturate(145%);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  mix-blend-mode: difference;
+  z-index: 130;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 220ms ease-in-out, transform 220ms ease-in-out, background-color 220ms ease-in-out, color 220ms ease-in-out;
+  cursor: pointer;
+}
+
+.scroll-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.scroll-top:not(.on-dark) {
+  mix-blend-mode: normal;
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.scroll-top:hover {
+  transform: translateY(-2px);
+}
+
+.scroll-top svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.mouse-hint {
+  position: fixed;
+  left: 50%;
+  bottom: 1.05rem;
+  transform: translateX(-50%) translateY(8px);
+  width: 3rem;
+  height: 4.2rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px) saturate(145%);
+  -webkit-backdrop-filter: blur(16px) saturate(145%);
+  color: #ffffff;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  row-gap: 0.1rem;
+  mix-blend-mode: difference;
+  z-index: 125;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 260ms ease-in-out, transform 260ms ease-in-out;
+}
+
+.mouse-hint.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.mouse-shell {
+  width: 1.3rem;
+  height: 2rem;
+  border: 2px solid currentColor;
+  border-radius: 999px;
+  display: grid;
+  justify-items: center;
+  align-items: start;
+  padding-top: 0.22rem;
+}
+
+.mouse-wheel {
+  width: 0.16rem;
+  height: 0.36rem;
+  border-radius: 999px;
+  background: currentColor;
+  animation: mouse-wheel-drop 1.1s ease-in-out infinite;
+}
+
+.mouse-arrow {
+  font-size: 0.75rem;
+  line-height: 1;
+  animation: mouse-arrow-bounce 1.1s ease-in-out infinite;
+}
+
+@keyframes mouse-wheel-drop {
+  0% {
+    opacity: 0.15;
+    transform: translateY(0);
+  }
+  55% {
+    opacity: 1;
+    transform: translateY(7px);
+  }
+  100% {
+    opacity: 0.1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mouse-arrow-bounce {
+  0% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  55% {
+    transform: translateY(4px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
 }
 
 .hero-content {
@@ -207,5 +369,16 @@ h1 {
 
   .hero-content {
     min-height: 100vh;
+  }
+
+  .scroll-top {
+    right: 0.8rem;
+    bottom: 0.8rem;
+  }
+
+  .mouse-hint {
+    bottom: 0.75rem;
+    width: 2.7rem;
+    height: 3.9rem;
   }
 }
