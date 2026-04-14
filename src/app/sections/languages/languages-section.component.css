@@ -9,7 +9,7 @@
   align-items: center;
   width: 100%;
   max-width: 100vw;
-  min-height: 112vh;
+  min-height: 126vh;
   background: #ffffff;
   color: #0f172a;
   overflow: hidden;
@@ -128,6 +128,8 @@ h2 {
 }
 
 .lang-icon {
+  --logo-float-x: 0px;
+  --logo-float-y: 0px;
   width: 1.9rem;
   height: 1.9rem;
   border-radius: 8px;
@@ -137,8 +139,9 @@ h2 {
   font-weight: 700;
   letter-spacing: 0.04em;
   color: #0f172a;
-  background: #e8eef6;
   overflow: hidden;
+  transform: translate(var(--logo-float-x), var(--logo-float-y));
+  transition: transform 220ms ease;
 }
 
 .lang-icon img {
@@ -151,6 +154,17 @@ h2 {
   width: 2rem;
   height: 2rem;
   border-radius: 10px;
+}
+
+.card-icon {
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 12px;
+}
+
+.card-icon img {
+  width: 84%;
+  height: 84%;
 }
 
 .lang-name {
@@ -190,6 +204,6 @@ h2 {
 
   .section-languages {
     align-items: flex-start;
-    min-height: 100vh;
+    min-height: 112vh;
   }
 }

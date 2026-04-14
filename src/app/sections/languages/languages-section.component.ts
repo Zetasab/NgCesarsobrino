@@ -38,6 +38,9 @@ export class LanguagesSectionComponent implements AfterViewInit, OnDestroy {
   @ViewChildren('revealBlock', { read: ElementRef })
   private readonly revealBlocks!: QueryList<ElementRef<HTMLElement>>;
 
+  @ViewChildren('trackLogo', { read: ElementRef })
+  private readonly trackLogos!: QueryList<ElementRef<HTMLElement>>;
+
   private intersectionObserver?: IntersectionObserver;
 
   protected readonly marqueeItems: MarqueeItem[] = [
@@ -151,6 +154,33 @@ export class LanguagesSectionComponent implements AfterViewInit, OnDestroy {
     this.revealBlocks.forEach((blockRef, index) => {
       blockRef.nativeElement.style.setProperty('--reveal-delay', `${index * 90}ms`);
       this.intersectionObserver?.observe(blockRef.nativeElement);
+    });
+  }
+
+  protected onSectionMouseMove(event: MouseEvent): void {
+    const maxOffset = 15;
+
+    this.trackLogos.forEach((logoRef) => {
+      const logoEl = logoRef.nativeElement;
+      const rect = logoEl.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      const deltaX = (event.clientX - centerX) * 0.08;
+      const deltaY = (event.clientY - centerY) * 0.08;
+
+      const offsetX = Math.max(-maxOffset, Math.min(maxOffset, deltaX));
+      const offsetY = Math.max(-maxOffset, Math.min(maxOffset, deltaY));
+
+      logoEl.style.setProperty('--logo-float-x', `${offsetX}px`);
+      logoEl.style.setProperty('--logo-float-y', `${offsetY}px`);
+    });
+  }
+
+  protected onSectionMouseLeave(): void {
+    this.trackLogos.forEach((logoRef) => {
+      logoRef.nativeElement.style.setProperty('--logo-float-x', '0px');
+      logoRef.nativeElement.style.setProperty('--logo-float-y', '0px');
     });
   }
 

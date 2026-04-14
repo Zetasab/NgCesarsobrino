@@ -1,9 +1,13 @@
-<section class="section section-languages" aria-labelledby="languages-title">
+<section
+  class="section section-languages"
+  aria-labelledby="languages-title"
+  (mousemove)="onSectionMouseMove($event)"
+  (mouseleave)="onSectionMouseLeave()"
+>
   <div class="fade-edge top" aria-hidden="true"></div>
 
   <div class="languages-wrap">
     <header #revealBlock class="section-head reveal-block">
-      <p class="eyebrow">Tech Stack</p>
       <h2 id="languages-title">Mis lenguajes utilizados</h2>
     </header>
 
@@ -39,7 +43,7 @@
             @for (item of group.items; track item.name) {
               <div class="lang-item">
                 <div class="lang-head">
-                  <span class="lang-icon">
+                  <span #trackLogo class="lang-icon card-icon">
                     @if (item.logo) {
                       <img [src]="item.logo" [alt]="item.name + ' logo'" />
                     } @else {
