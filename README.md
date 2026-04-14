@@ -82,6 +82,42 @@ npm run build   # genera build de producción
 npm run test    # ejecuta tests
 ```
 
+## Ejecutar con Docker
+
+Requisitos:
+
+- Docker Desktop instalado
+
+Construir imagen:
+
+```bash
+docker build -t ng-cesarsobrino .
+```
+
+Ejecutar contenedor:
+
+```bash
+docker run -d --name ng-cesarsobrino-web -p 8080:80 ng-cesarsobrino
+```
+
+Abrir en navegador:
+
+```text
+http://localhost:8080
+```
+
+Con Docker Compose:
+
+```bash
+docker compose up -d --build
+```
+
+Parar y eliminar:
+
+```bash
+docker compose down
+```
+
 ## Nota
 
 - Si no ves cambios en assets o scripts estáticos, haz una recarga forzada con Ctrl+F5.
