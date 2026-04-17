@@ -33,6 +33,7 @@
     "ForEach-Object": true,
     "Move-Item": true,
     "nslookup": true,
-    "git remote": true
+    "git remote": true,
+    "npm install": true
 }
 }
