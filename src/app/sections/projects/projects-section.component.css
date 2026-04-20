@@ -68,9 +68,9 @@
 }
 
 .project-card {
-	width: 190px;
-	height: 190px;
-	border-radius: 96px;
+	width: 248px;
+	height: 156px;
+	border-radius: 18px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -79,6 +79,8 @@
 	overflow: hidden;
 	background: #141414;
 	cursor: pointer;
+	text-decoration: none;
+	color: inherit;
 	transition:
 		width 620ms ease-in-out,
 		height 620ms ease-in-out,
@@ -87,10 +89,27 @@
 		background-color 420ms ease-in-out;
 }
 
+.project-card:hover,
+.project-card:visited,
+.project-card:active {
+	text-decoration: none;
+	color: inherit;
+}
+
+.project-card .project-info h3,
+.project-card .project-info p {
+	text-decoration: none;
+}
+
+.project-card:focus-visible {
+	outline: 2px solid #f7f7f7;
+	outline-offset: 3px;
+}
+
 .project-card:hover {
 	width: min(860px, 78vw);
-	height: 360px;
-	border-radius: 22px;
+	height: 320px;
+	border-radius: 20px;
 	gap: 1.2rem;
 	padding: 1rem;
 	z-index: 40;
@@ -100,58 +119,57 @@
 
 .project-icon-wrap {
 	position: relative;
-	flex: 0 0 190px;
-	width: 190px;
-	min-width: 190px;
-	height: 190px;
+	flex: 0 0 248px;
+	width: 248px;
+	min-width: 248px;
+	height: 156px;
 	display: grid;
 	place-items: center;
-	padding: 0.55rem;
+	padding: 0.45rem;
 	overflow: hidden;
-	border-radius: 24px;
+	border-radius: 14px;
 }
 
 .project-card:hover .project-icon-wrap {
-	flex-basis: 280px;
-	width: 280px;
-	min-width: 280px;
-	height: 280px;
+	flex-basis: 360px;
+	width: 360px;
+	min-width: 360px;
+	height: 220px;
 }
 
 .project-icon,
-.project-video {
-	width: 92%;
-	height: 92%;
+.project-preview {
+	width: 100%;
+	height: 100%;
 	object-fit: contain;
 	transition: transform 420ms ease-in-out, opacity 320ms ease-in-out;
 }
 
-.project-video {
+.project-preview {
 	position: absolute;
 	inset: 0;
 	margin: auto;
-	width: 180%;
-	height: auto;
-	max-height: 64%;
+	width: 100%;
+	height: 100%;
 	aspect-ratio: 16 / 9;
 	object-fit: cover;
-	border-radius: 22px;
+	border-radius: 12px;
 	opacity: 0;
 	pointer-events: none;
 	z-index: 3;
 }
 
 .project-card:hover .project-icon {
-	transform: scale(1.28);
+	transform: scale(1.08);
 }
 
-.project-card.has-video:hover .project-icon {
+.project-card.has-preview:hover .project-icon {
 	opacity: 0;
 }
 
-.project-card.has-video:hover .project-video {
+.project-card.has-preview:hover .project-preview {
 	opacity: 1;
-	transform: scale(1.22);
+	transform: scale(1.04);
 }
 
 .project-info {
@@ -169,7 +187,7 @@
 }
 
 .project-card:hover .project-info {
-	width: calc(100% - 280px);
+	width: calc(100% - 360px);
 	opacity: 1;
 	padding: 1.2rem 1.4rem;
 }
@@ -239,21 +257,22 @@
 	.project-card,
 	.project-card:hover {
 		margin: 0 auto;
-		width: 156px;
-		height: 156px;
-		border-radius: 50%;
+		width: min(100%, 240px);
+		height: 150px;
+		border-radius: 16px;
 		background: #161616;
 	}
 
 	.project-icon-wrap {
-		flex-basis: 156px;
-		width: 156px;
-		min-width: 156px;
-		height: 156px;
+		flex-basis: min(100%, 240px);
+		width: min(100%, 240px);
+		min-width: 0;
+		height: 150px;
 		overflow: hidden;
+		border-radius: 12px;
 	}
 
-	.project-video {
+	.project-preview {
 		display: none;
 	}
 }

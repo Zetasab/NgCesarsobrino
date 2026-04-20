@@ -5,7 +5,8 @@ interface ProjectItem {
 	name: string;
 	description: string;
 	image: string;
-	video?: string;
+	preview?: string;
+	url: string;
 }
 
 @Component({
@@ -18,57 +19,36 @@ interface ProjectItem {
 export class ProjectsSectionComponent {
 	protected readonly projects: ProjectItem[] = [
 		{
-			name: 'ZetaDashboard',
+			name: 'Animations',
 			description:
-				'Proyecto personal para gestionar usuarios y datos con tablas y CRUDs. Frontend en Blazor y consumo de API REST propia en C#.',
-			image: 'proyects/front-page/Proyects_dashboard.png',
-			video: 'proyects/videos/dashboard.mp4'
+				'Proyecto personal de motos con animaciones scroll y modelos 3d con librerias de externos para dar una funcionalidad moderna y 3d al usuario.',
+			image: 'proyects/front-page/Proyects_animations.png',
+			preview: 'proyects/videos/animations3d.gif',
+			url: 'https://animation3d.cesarsobrino.es'
 		},
 		{
 			name: 'ZetaMovies',
 			description:
 				'Proyecto personal para guardar peliculas vistas o pendientes. Frontend en Vue.js y conexion con API de TheMovieDatabase.',
 			image: 'proyects/front-page/Proyects_movies.png',
-			video: 'proyects/videos/movies.mp4'
+			preview: 'proyects/videos/movies.gif',
+			url: 'https://movies.cesarsobrino.es'
 		},
 		{
 			name: 'ZetaGames',
 			description:
 				'Proyecto personal para organizar juegos jugados o pendientes. Frontend en React.js y conexion con API de RAWG.',
 			image: 'proyects/front-page/Proyects_games.png',
-			video: 'proyects/videos/games.mp4'
+			preview: 'proyects/videos/games.gif',
+			url: 'https://games.cesarsobrino.es'
 		},
 		{
-			name: 'Antiguo Portfolio',
-			description: 'Mi portfolio anterior, creado en 2022.',
-			image: 'proyects/front-page/Proyects_cv.png'
+			name: 'Mi portfolio web',
+			description:
+				'Mi portfolio web actual, hecho con html css y js mas librerias externas para animaciones de scroll para dar una funcionalidad y experiencia de usuario moderna.',
+			image: 'proyects/front-page/Proyects_cv.png',
+			preview: 'proyects/videos/portfolio.gif',
+			url: 'https://portfolio.cesarsobrino.es'
 		}
 	];
-
-	protected onCardEnter(video?: HTMLVideoElement): void {
-		if (!video) {
-			return;
-		}
-
-		video.muted = true;
-		video.playsInline = true;
-		video.autoplay = true;
-		video.setAttribute('autoplay', '');
-		video.currentTime = 0;
-		void video.play().catch(() => {
-			video.load();
-			void video.play();
-		});
-	}
-
-	protected onCardLeave(video?: HTMLVideoElement): void {
-		if (!video) {
-			return;
-		}
-
-		video.pause();
-		video.currentTime = 0;
-		video.autoplay = false;
-		video.removeAttribute('autoplay');
-	}
 }

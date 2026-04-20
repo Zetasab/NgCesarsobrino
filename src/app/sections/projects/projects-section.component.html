@@ -14,98 +14,101 @@
 				</svg>
 			</div>
 
-			<article
+			<a
 				#projectNode1
 				class="node project-card pos-1"
-				[class.has-video]="!!projects[0].video"
+				[class.has-preview]="!!projects[0].preview"
+				[href]="projects[0].url"
+				target="_blank"
+				rel="noopener noreferrer"
 				[attr.aria-label]="projects[0].name"
-				(mouseenter)="onCardEnter(videoOne)"
-				(mouseleave)="onCardLeave(videoOne)"
 			>
 				<div class="project-icon-wrap">
 					<img class="project-icon" [src]="projects[0].image" [alt]="projects[0].name + ' icono'" loading="lazy" />
-					<video
-						#videoOne
-						class="project-video"
-						[src]="projects[0].video"
-						muted
-						loop
-						playsinline
-						preload="metadata"
-					></video>
+					<img
+						class="project-preview"
+						[src]="projects[0].preview"
+						[alt]="projects[0].name + ' preview animada'"
+						loading="lazy"
+					/>
 				</div>
 				<div class="project-info">
 					<h3>{{ projects[0].name }}</h3>
 					<p>{{ projects[0].description }}</p>
 				</div>
-			</article>
+			</a>
 
-			<article
+			<a
 				#projectNode2
 				class="node project-card pos-2"
-				[class.has-video]="!!projects[1].video"
+				[class.has-preview]="!!projects[1].preview"
+				[href]="projects[1].url"
+				target="_blank"
+				rel="noopener noreferrer"
 				[attr.aria-label]="projects[1].name"
-				(mouseenter)="onCardEnter(videoTwo)"
-				(mouseleave)="onCardLeave(videoTwo)"
 			>
 				<div class="project-icon-wrap">
 					<img class="project-icon" [src]="projects[1].image" [alt]="projects[1].name + ' icono'" loading="lazy" />
-					<video
-						#videoTwo
-						class="project-video"
-						[src]="projects[1].video"
-						muted
-						loop
-						playsinline
-						preload="metadata"
-					></video>
+					<img
+						class="project-preview"
+						[src]="projects[1].preview"
+						[alt]="projects[1].name + ' preview animada'"
+						loading="lazy"
+					/>
 				</div>
 				<div class="project-info">
 					<h3>{{ projects[1].name }}</h3>
 					<p>{{ projects[1].description }}</p>
 				</div>
-			</article>
+			</a>
 
-			<article
+			<a
 				#projectNode3
 				class="node project-card pos-3"
-				[class.has-video]="!!projects[2].video"
+				[class.has-preview]="!!projects[2].preview"
+				[href]="projects[2].url"
+				target="_blank"
+				rel="noopener noreferrer"
 				[attr.aria-label]="projects[2].name"
-				(mouseenter)="onCardEnter(videoThree)"
-				(mouseleave)="onCardLeave(videoThree)"
 			>
 				<div class="project-icon-wrap">
 					<img class="project-icon" [src]="projects[2].image" [alt]="projects[2].name + ' icono'" loading="lazy" />
-					<video
-						#videoThree
-						class="project-video"
-						[src]="projects[2].video"
-						muted
-						loop
-						playsinline
-						preload="metadata"
-					></video>
+					<img
+						class="project-preview"
+						[src]="projects[2].preview"
+						[alt]="projects[2].name + ' preview animada'"
+						loading="lazy"
+					/>
 				</div>
 				<div class="project-info">
 					<h3>{{ projects[2].name }}</h3>
 					<p>{{ projects[2].description }}</p>
 				</div>
-			</article>
+			</a>
 
-			<article
+			<a
 				#projectNode4
 				class="node project-card pos-4"
-				[class.has-video]="!!projects[3].video"
+				[class.has-preview]="!!projects[3].preview"
+				[href]="projects[3].url"
+				target="_blank"
+				rel="noopener noreferrer"
 				[attr.aria-label]="projects[3].name"
 			>
 				<div class="project-icon-wrap">
 					<img class="project-icon" [src]="projects[3].image" [alt]="projects[3].name + ' icono'" loading="lazy" />
+					<img
+						class="project-preview"
+						[src]="projects[3].preview"
+						[alt]="projects[3].name + ' preview animada'"
+						loading="lazy"
+					/>
 				</div>
 				<div class="project-info">
 					<h3>{{ projects[3].name }}</h3>
 					<p>{{ projects[3].description }}</p>
 				</div>
-			</article>
+			</a>
 
 			<om-connection-beam
 				[fromRef]="githubNode"
