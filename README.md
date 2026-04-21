@@ -1,6 +1,8 @@
 # Cesar Sobrino | Portfolio
 
-![Portada del portfolio](public/Portada.png)
+Puedes verlo aqui [Live Demo](https://portfoliong.cesarsobrino.es)
+
+![Portada del portfolio](public/cv.gif)
 
 Portfolio personal desarrollado con Angular, orientado a mostrar perfil profesional, experiencia, stack técnico y proyectos mediante una navegación visual por secciones.
 
