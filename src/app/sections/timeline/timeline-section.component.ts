@@ -44,9 +44,9 @@ export class TimelineSectionComponent implements AfterViewInit, OnDestroy {
       description: 'Graduado en el Grado Superior de Programacion de Aplicaciones Multiplataforma (DAM).'
     },
     {
-      period: '2022',
-      title: 'Grado Superior DAW',
-      description: 'Graduado en el Grado Superior de Programacion de Aplicaciones Web (DAW).'
+      period: 'Septiembre 2021',
+      title: 'Certificado en Angular 12 y ASP.NET Core 5',
+      description: 'Formacion en Angular 12 y ASP.NET Core 5.'
     },
     {
       period: 'Octubre 2021 - marzo 2022',
@@ -54,9 +54,24 @@ export class TimelineSectionComponent implements AfterViewInit, OnDestroy {
       description: 'Desarrollador de Software de Aplicaciones .NET Core con Angular en VisibleSoft.'
     },
     {
+      period: '2022',
+      title: 'Grado Superior DAW',
+      description: 'Graduado en el Grado Superior de Programacion de Aplicaciones Web (DAW).'
+    },
+    {
       period: 'Diciembre 2022 - actualmente',
       title: 'Excem Technologies',
       description: 'Desarrollador de Software de Aplicaciones .NET Core con Angular/Blazor en Excem Technologies.'
+    },
+    {
+      period: 'Julio 2026',
+      title: 'Certificado en React: De cero a experto',
+      description: 'Formacion en React desde cero hasta nivel experto.'
+    },
+    {
+      period: 'Agosto 2026',
+      title: 'Certificado en Claude Code',
+      description: 'Formacion en Claude Code.'
     }
   ]);
 

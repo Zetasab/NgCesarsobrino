@@ -2,6 +2,7 @@
     console.info("[visit-tracker] script cargado (v1)");
     window.__visitTrackerLoaded = true;
     const VISIT_ENDPOINT = "https://cesarsobapigateway.up.railway.app/api/Visits/addvisitng";
+    const PROJECT_VISIT_ENDPOINT = "https://cesarsobapigateway.up.railway.app/api/Visits/addvisitingproyect";
     const HUMAN_SIGNAL_TIMEOUT_MS = 12000;
     const VISIT_DEDUP_TTL_MS = 30 * 60 * 1000;
     const BOT_UA_REGEX = /bot|crawl|spider|slurp|bingpreview|headless|wget|curl|python-requests|aiohttp|httpclient|scanner|nikto|sqlmap|nmap/i;
@@ -149,4 +150,43 @@
     } else {
         window.addEventListener("load", scheduleRegisterVisit, { once: true });
     }
+
+    function getVisitParamForProjectClick() {
+        return getVisitParam();
+    }
+
+    function registerProjectVisit(proyect) {
+        try {
+            const visitParam = getVisitParamForProjectClick();
+            const endpointUrl = new URL(PROJECT_VISIT_ENDPOINT);
+
+            if (visitParam) {
+                endpointUrl.searchParams.set("visitparams", visitParam);
+            }
+            endpointUrl.searchParams.set("proyect", proyect);
+
+            fetch(endpointUrl.toString(), {
+                method: "POST",
+                mode: "cors",
+                credentials: "omit",
+                cache: "no-store"
+            }).catch(function (error) {
+                console.warn("[visit-tracker] No se pudo registrar la visita al proyecto:", error);
+            });
+        } catch (error) {
+            console.warn("[visit-tracker] No se pudo registrar la visita al proyecto:", error);
+        }
+    }
+
+    // Delegación de eventos: las tarjetas de proyecto las renderiza Angular
+    // (pueden no existir todavía en el momento en que carga este script).
+    document.addEventListener("click", function (event) {
+        const card = event.target.closest && event.target.closest(".project-card");
+        if (!card) {
+            return;
+        }
+
+        const proyect = card.getAttribute("aria-label") || card.href || "desconocido";
+        registerProjectVisit(proyect);
+    }, true);
 })();

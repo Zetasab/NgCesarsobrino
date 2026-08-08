@@ -19,12 +19,12 @@ interface ProjectItem {
 export class ProjectsSectionComponent {
 	protected readonly projects: ProjectItem[] = [
 		{
-			name: 'Animations',
+			name: 'Templates',
 			description:
-				'Proyecto personal de motos con animaciones scroll y modelos 3d con librerias de externos para dar una funcionalidad moderna y 3d al usuario.',
-			image: 'proyects/front-page/Proyects_animations.png',
-			preview: 'proyects/videos/animations3d.gif',
-			url: 'https://animation3d.cesarsobrino.es'
+				'Proyecto personal de donde se guardan las templates creadas para uso y descarga gratuita.',
+			image: 'proyects/front-page/Proyects_animations.webp',
+			preview: 'proyects/videos/templates.gif',
+			url: 'https://templates.cesarsobrino.es'
 		},
 		{
 			name: 'ZetaMovies',
