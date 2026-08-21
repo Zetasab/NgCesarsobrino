@@ -33,6 +33,11 @@
         const endpointUrl = new URL(KEEPALIVE_ENDPOINT);
         endpointUrl.searchParams.set("idSeg", getIdSeg());
 
+        const visitParam = getVisitParam();
+        if (visitParam) {
+            endpointUrl.searchParams.set("visit", visitParam);
+        }
+
         fetch(endpointUrl.toString(), {
             method: "POST",
             mode: "cors",
