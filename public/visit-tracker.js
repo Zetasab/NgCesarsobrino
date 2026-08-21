@@ -1,12 +1,47 @@
 (function () {
-    console.info("[visit-tracker] script cargado (v1)");
+    console.info("[visit-tracker] script cargado (v2)");
     window.__visitTrackerLoaded = true;
-    const VISIT_ENDPOINT = "https://cesarsobapigateway.up.railway.app/api/Visits/addvisitng";
-    const PROJECT_VISIT_ENDPOINT = "https://cesarsobapigateway.up.railway.app/api/Visits/addvisitingproyect";
+    const API_BASE = "https://cesarsobapigateway.up.railway.app";
+    const VISIT_ENDPOINT = API_BASE + "/api/addportfolio";
+    const KEEPALIVE_ENDPOINT = API_BASE + "/api/addkeepaliveportfolio";
     const HUMAN_SIGNAL_TIMEOUT_MS = 12000;
     const VISIT_DEDUP_TTL_MS = 30 * 60 * 1000;
+    const HEARTBEAT_INTERVAL_MS = 60000;
+    const ID_SEG_KEY = "portfolio_id_seg";
     const BOT_UA_REGEX = /bot|crawl|spider|slurp|bingpreview|headless|wget|curl|python-requests|aiohttp|httpclient|scanner|nikto|sqlmap|nmap/i;
-    // const VISIT_ENDPOINT = "http://localhost:5112/api/Visits/addvisit";
+
+    let heartbeatIntervalId = null;
+
+    function getIdSeg() {
+        let idSeg = sessionStorage.getItem(ID_SEG_KEY);
+        if (!idSeg) {
+            idSeg = crypto.randomUUID();
+            sessionStorage.setItem(ID_SEG_KEY, idSeg);
+        }
+        return idSeg;
+    }
+
+    function startHeartbeat() {
+        if (heartbeatIntervalId !== null) {
+            return;
+        }
+
+        heartbeatIntervalId = setInterval(sendHeartbeat, HEARTBEAT_INTERVAL_MS);
+    }
+
+    function sendHeartbeat() {
+        const endpointUrl = new URL(KEEPALIVE_ENDPOINT);
+        endpointUrl.searchParams.set("idSeg", getIdSeg());
+
+        fetch(endpointUrl.toString(), {
+            method: "POST",
+            mode: "cors",
+            credentials: "omit",
+            cache: "no-store"
+        }).catch(function (error) {
+            console.warn("[visit-tracker] No se pudo enviar el keepalive de visita:", error);
+        });
+    }
 
     function getVisitParam() {
         const queryParam = new URLSearchParams(window.location.search).get("visitparams");
@@ -49,17 +84,20 @@
             const endpointUrl = new URL(VISIT_ENDPOINT);
 
             if (visitParam) {
-                endpointUrl.searchParams.set("visitparams", visitParam);
+                endpointUrl.searchParams.set("visit", visitParam);
             }
 
             await fetch(endpointUrl.toString(), {
                 method: "POST",
                 mode: "cors",
                 credentials: "omit",
-                cache: "no-store"
+                cache: "no-store",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ idSeg: getIdSeg() })
             });
 
             markTracked(dedupKey);
+            startHeartbeat();
 
             console.info("[visit-tracker] visita registrada", endpointUrl.toString());
         } catch (error) {
@@ -158,18 +196,19 @@
     function registerProjectVisit(proyect) {
         try {
             const visitParam = getVisitParamForProjectClick();
-            const endpointUrl = new URL(PROJECT_VISIT_ENDPOINT);
+            const endpointUrl = new URL(VISIT_ENDPOINT);
 
             if (visitParam) {
-                endpointUrl.searchParams.set("visitparams", visitParam);
+                endpointUrl.searchParams.set("visit", visitParam);
             }
-            endpointUrl.searchParams.set("proyect", proyect);
 
             fetch(endpointUrl.toString(), {
                 method: "POST",
                 mode: "cors",
                 credentials: "omit",
-                cache: "no-store"
+                cache: "no-store",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ idSeg: getIdSeg(), proyect: proyect })
             }).catch(function (error) {
                 console.warn("[visit-tracker] No se pudo registrar la visita al proyecto:", error);
             });
